@@ -4,7 +4,11 @@ const express = require("express");
 const app = express();
 
 const server = http.createServer(app);
-const io = socket(server);
+const io = socket(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
 io.on("connection", (socket) => {
   console.log("what is socket", socket);
@@ -18,5 +22,4 @@ io.on("connection", (socket) => {
 });
 
 //should not uses app.listen()
-// app.listen(3000, () => console.log("server is running on port 3000"));
-server.listen(5000, () => console.log("server is listening on port 5000"));
+server.listen(8000, () => console.log("server is listening on port 8000"));
